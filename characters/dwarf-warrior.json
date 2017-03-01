@@ -1,0 +1,68 @@
+{
+  "name": "Dwarf-Warrior",
+  "className": "Warrior",
+  "race": "Dwarf",
+  "culture": "Dwarf",
+  "description": "",
+  "attributes": {
+    "strength": {
+      "value": 3
+    },
+    "agility": {
+      "value": 1
+    },
+    "physique": {
+      "value": 2
+    },
+    "dexterity": {
+      "value": 2
+    },
+    "wisdom": {
+      "value": 1
+    },
+    "intuition": {
+      "value": 2
+    },
+    "willpower": {
+      "value": 2
+    },
+    "courage": {
+      "value": 2
+    },
+    "charisma": {
+      "value": 1
+    }
+  },
+  "abilities": {
+    "melee": {
+      "value": 2
+    },
+    "range": {
+      "value": 0
+    },
+    "physical": {
+      "value": 2
+    },
+    "mental": {
+      "value": 1
+    },
+    "magic": {
+      "value": 0
+    }
+  },
+  "talents": [],
+  "armor": 3,
+  "weapons": {
+    "melee": [{
+      "name": "Dwarfen Mace",
+      "talent": "mace",
+      "ability": "melee",
+      "attribute": "strength",
+      "attack": 0,
+      "defense": 0,
+      "damage": 1
+    }],
+    "range": []
+  },
+  "rounds": 0
+}
