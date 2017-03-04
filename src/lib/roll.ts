@@ -8,29 +8,24 @@ export class Roll {
     
     roll() : number {
         let critical = 0,
-            success = 0;
+            success = 0,
+            rolls = [];
         
         for(let i = 0; i < this.quantity; ++i) {
             let roll = this.dice.roll();
+            rolls.push(roll);
             
-            switch(roll) {
-                case 1:
-                    critical++;
-                    break;
-                case 20:
-                    success--;
-                    break;
-                default:
-                    if(roll <= this.difficulty) {
-                        success++;
-                    } else {
-                        success--;
-                    }
+            if(1 === roll) {
+                critical++;
+            } else if(20 === roll) {
+                success--;
+            } else if(roll <= this.difficulty) {
+                success++;
             }
         }
         
         if(critical) {
-            return Math.min(critical, success + success);
+            return Math.max(critical, success + critical);
         } else {
             return success;
         }

@@ -50,8 +50,19 @@
       "value": 0
     }
   },
-  "talents": [],
-  "armor": 3,
+  "talents": [
+      {
+          "name": "mace",
+          "value": 3,
+          "specializations": [
+              {
+                  "name": "Dwarfen Mace",
+                  "value": 1
+              }
+          ]
+      }
+  ],
+  "armor": 5,
   "weapons": {
     "melee": [{
       "name": "Dwarfen Mace",
@@ -64,5 +75,5 @@
     }],
     "range": []
   },
-  "rounds": 0
+  "wounds": 0
 }

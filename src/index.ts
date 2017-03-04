@@ -1,11 +1,10 @@
-
-import { AttackSimulator } from './lib/simulator';
+import { Simulator, ISimulatorResult } from './lib/simulator';
 import { Character } from './lib/character';
-import { NormalAttack } from './lib/simulator/attack';
-import { NormalDefense } from './lib/simulator/defense';
+import { NormalAttack, ImpactHitAttack, FeintAttack, HammerBlowAttack, AimedStabAttack } from './lib/simulator/attack';
+import { NormalDefense, NoneDefense } from './lib/simulator/defense';
 
 
-const rawDwarf = require('../characters/dwarf-warrior.json');
+const rawDwarf = require('../../characters/dwarf-warrior.json');
 
 const attacker = Character.fromJSON(rawDwarf);
 const defender = Character.fromJSON(rawDwarf);
@@ -13,37 +12,37 @@ const defender = Character.fromJSON(rawDwarf);
 const attack = new NormalAttack();
 const defense = new NormalDefense();
 
-defender['raw'].wounds = 4;
 
-const attackSimulator = new AttackSimulator(attacker, defender);
 
-let result = {
-    'miss': 0,
-    'defense': 0,
-    'hit': 0,
-    'damage': 0
-};
-// console.log(attackSimulator.simulate(attack, defense));
 
-for(let i = 0; i < 10000; i++) {
-    let res = attackSimulator.simulate(attack, defense);
+let battleSim = new Simulator(attacker, defender, attack, defense, attack, defense);
+
+stats('normal attack', battleSim.simulate(1000));
+
+for(let i of [ 1, 2, 3, 4, 5, 6, 7 ]) {
+    battleSim.setAttackerAttack(new ImpactHitAttack(i));
     
-    switch(res.status) {
-        case 'hit':
-            if(!(res.damage in result)) {
-                result[res.damage] = 0;
-            }
-            result[res.damage]++;
-            if(res.damage) {
-                result.damage++;
-            }
-        case 'miss':
-        case 'defense':
-            result[res.status]++;
-            break;
-        default:
-            
-    }
+    stats(`impact hit ${i}`, battleSim.simulate(1000));
 }
 
-console.log(result);
+for(let i of [ 1, 2, 3, 4, 5, 6, 7 ]) {
+    battleSim.setAttackerAttack(new FeintAttack(i));
+    
+    stats(`feint ${i}`, battleSim.simulate(1000));
+}
+
+battleSim.setAttackerAttack(new AimedStabAttack());
+
+stats('aimed stab attack', battleSim.simulate(1000));
+
+battleSim
+    .setAttackerAttack(new HammerBlowAttack())
+    .setAttackerDefense(new NoneDefense());
+
+
+stats('hammer blow attack', battleSim.simulate(1000));
+
+
+function stats(text: string, result : ISimulatorResult) {
+    console.log(text, result.stats.result.attackerWin.percent, result.stats.averageRounds, result.stats.attacker.damage.average);
+}

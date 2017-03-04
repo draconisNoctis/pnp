@@ -5,15 +5,22 @@ import { join } from 'path';
 const windows = new Set<Electron.BrowserWindow>();
 
 function createWindow() {
-    let win = new BrowserWindow({ width: 800, height: 600 });
+    let win = new BrowserWindow({
+        width: 1200,
+        height: 800,
+    });
     
     windows.add(win);
     
     win.loadURL(format({
-        pathname: join(__dirname, './index.html'),
+        pathname: join(__dirname, '../angular2/index.html'),
         protocol: 'file:',
         slashes: true
     }));
+    
+    win.webContents.openDevTools({ mode: 'right' });
+    
+    win.maximize();
     
     win.on('closed', () => {
         windows.delete(win);

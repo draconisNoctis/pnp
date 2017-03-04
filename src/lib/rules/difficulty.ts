@@ -11,6 +11,6 @@ export class DifficultyByWoundsImpl extends DifficultyByWounds {
         if(0 === character.getWounds()) {
             return 0;
         }
-        return character.getWounds() * 2 - 1
+        return -(character.getWounds() * 2 - 1)
     }
 }

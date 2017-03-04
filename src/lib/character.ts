@@ -77,7 +77,7 @@ export class Character {
         if(!t) {
             return -1;
         }
-        let s = spezialization && t.spezializations && t.spezializations.find(({ name }) => spezialization === name);
+        let s = spezialization && t.specializations && t.specializations.find(({ name }) => spezialization === name);
         if(!s) {
             return t.value;
         } else {
@@ -103,6 +103,23 @@ export class Character {
     getWounds() {
         return this.raw.wounds;
     }
+    
+    setWounds(wounds : number) : this {
+        this.raw.wounds = wounds;
+        return this;
+    }
+    
+    isAlive() : boolean {
+        return this.getWounds() < 5;
+    }
+    
+    clone() {
+        return Character.fromJSON(this.toJSON());
+    }
+    
+    getArmor() {
+        return this.raw.armor;
+    }
 }
 
 export class Weapon {
@@ -110,6 +127,10 @@ export class Weapon {
     get attribute() { return this.raw.attribute };
     get ability() { return this.raw.ability };
     get talent() { return this.raw.talent };
+    
+    get attack() { return this.raw.attack }
+    get defense() { return this.raw.defense }
+    get damage() { return this.raw.damage }
     
     
     constructor(protected raw : IRawWeapon, protected character : Character) {}

@@ -49,10 +49,10 @@ export interface IRawTalent {
     name: string;
     value: number;
     abilities: (keyof IRawAbilities)[];
-    spezializations?: IRawSpezialization[];
+    specializations?: IRawSpecialization[];
 }
 
-export interface IRawSpezialization {
+export interface IRawSpecialization {
     name: string;
     value: number;
 }
