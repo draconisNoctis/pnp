@@ -1,0 +1,63 @@
+
+.m-input {
+    width: 100%;
+    border: none;
+    border-bottom: var(--line-width) solid var(--font-color);
+    background: transparent;
+    font: var(--font);
+}
+
+.m-input--textarea {
+    background-image: linear-gradient(transparent, transparent calc(var(--line-height) - var(--line-width)), var(--font-color) calc(var(--line-height) - var(--line-width)), var(--font-color) var(--line-height));
+    background-size: 100% var(--line-height);
+    background-position-y: -1px;
+    resize: none;
+    width: 100%;
+
+    line-height: calc(var(--line-height) * 1.03);
+    border-bottom: 0;
+}
+
+.m-input--textarea--3 {
+    height: calc(3.1 * var(--line-height));
+}
+
+.m-input--textarea--5 {
+    height: calc(5.1 * var(--line-height));
+}
+
+.m-input--textarea--7 {
+    height: calc(7.1 * var(--line-height));
+}
+
+.m-input--textarea--9 {
+    height: calc(9.1 * var(--line-height));
+}
+
+.m-input--text {
+}
+
+.m-input--graybox {
+    background: rgba(0, 0, 0, .2);
+    border: none;
+    padding: calc(1 * var(--grid-spacing)) 0;
+    width: 1cm;
+}
+
+.m-input--crossed {
+    background-color: rgba(0, 0, 0, .2);
+    background-image: linear-gradient(to bottom right, transparent, transparent 48%, #999 42%, #999 52%, transparent 52%, transparent),
+                      linear-gradient(to bottom left, transparent, transparent 48%, #999 42%, #999 52%, transparent 52%, transparent);
+    background-size: 100% 100%;
+}
+
+@media print {
+    .m-input--textarea {
+    }
+}
+
+.m-input--dropdown {
+    -webkit-appearance: none;
+    border-radius: 0;
+    transform: translateY(2px);
+}

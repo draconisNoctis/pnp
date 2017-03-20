@@ -1,0 +1,15 @@
+.l-flex {
+    display: flex;
+}
+
+.l-flex--spaced {
+    justify-content: space-around;
+}
+
+.l-flex__shrink {
+    flex-grow: 1;
+}
+
+.l-flex__grow {
+    flex-grow: 100;
+}

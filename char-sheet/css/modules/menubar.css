@@ -1,0 +1,81 @@
+.m-menubar {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    background: #fff;
+    border: 1px solid var(--font-color);
+    border-top: 0;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .6);
+
+    font: 12px/24px Roboto;
+    letter-spacing: 0;
+}
+
+.m-menubar--root {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+}
+
+.m-menubar__label {
+    display: block;
+    padding: 0 var(--grid-spacing);
+    cursor: pointer;
+}
+
+.m-menubar__label--no-action {
+    cursor: default;
+}
+
+.m-menubar--root > .m-menubar__item > .m-menubar__label {
+
+    display: inline-block;
+}
+
+.m-menubar--root:focus .m-menubar__item:hover > .m-menubar {
+    display: block;
+}
+
+.m-menubar__item {
+    position: relative;
+}
+
+.m-menubar--root > .m-menubar__item {
+    display: inline-block;
+}
+
+.m-menubar .m-menubar {
+    display: none;
+    width: 200px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+.m-menubar__next {
+    display: inline-block;
+    float: right;
+    width: 8px;
+    height: 16px;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid black;
+    border-top: 8px solid transparent;
+
+}
+
+.m-menubar .m-menubar .m-menubar {
+    left: 100%;
+    top: 0;
+}
+
+@media print {
+    .m-menubar--root {
+        display: none;
+    }
+}

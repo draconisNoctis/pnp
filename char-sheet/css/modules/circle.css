@@ -1,0 +1,22 @@
+
+.m-circle {
+    display: inline-block;
+    --size: calc(var(--line-height)*2/3);
+    width: var(--size);
+    height: var(--size);
+    border: var(--line-width) solid var(--font-color);
+    border-radius: 50%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+}
+
+.m-circle--small {
+    --size: calc(var(--line-height)/2);
+    transform: translateY(calc(var(--size)));
+}
+
+.m-circle.filled, .m-circle:checked {
+    background: var(--font-color);
+}

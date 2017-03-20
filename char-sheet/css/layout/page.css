@@ -1,0 +1,8 @@
+.l-page {
+    width: 21cm;
+    height: 29.7cm;
+    margin: 1cm auto;
+    padding: 1cm .5cm;
+    box-shadow: 0 0 1cm rgba(0, 0, 0, .6);
+    background-color: #fff;
+}

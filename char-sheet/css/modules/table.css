@@ -1,0 +1,15 @@
+
+
+.m-table {
+    display: table;
+    width: 100%;
+}
+
+.m-table__row {
+    display: table-row;
+}
+
+.m-table__cell {
+    display: table-cell;
+    margin-right: .25cm;
+}

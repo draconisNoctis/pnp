@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/theme/ancient.css">
+    <script src="https://unpkg.com/systemjs@0.20.10"></script>
+    <title></title>
+</head>
+<body>
+    <ul class="m-menubar m-menubar--root" tabindex="0">
+        <li class="m-menubar__item">
+            <span class="m-menubar__label">Daten</span>
+            <ul class="m-menubar">
+                <li class="m-menubar__item"><label class="m-menubar__label" for="import">Import</label><input type="file" id="import" hidden></li>
+                <li class="m-menubar__item"><span class="m-menubar__label" id="export">Export</span></li>
+                <li class="m-menubar__item"><span class="m-menubar__label" id="reset">Leeren</span></li>
+            </ul>
+        </li>
+        <li class="m-menubar__item">
+            <span class="m-menubar__label">Charakter</span>
+            <ul class="m-menubar">
+                <li class="m-menubar__item">
+                    <span class="m-menubar__label m-menubar__label--no-action">Laden <span class="m-menubar__next"></span></span>
+                    <ul class="m-menubar" id="available-chars">
+                        <li class="m-menubar__item">
+                            <span class="m-menubar__label">Foobar</span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="m-menubar__item"><span class="m-menubar__label" id="save">Speichern</span></li>
+                <li class="m-menubar__item"><span class="m-menubar__label" id="delete">Löschen</span></li>
+            </ul>
+        </li>
+        <li class="m-menubar__item">
+            <span class="m-menubar__label">Theme</span>
+            <ul class="m-menubar">
+                <li class="m-menubar__item"><label for="theme-default" class="m-menubar__label"><input type="radio" name="theme" value="" id="theme-default"> Default</label></li>
+                <li class="m-menubar__item"><label for="theme-ancient" class="m-menubar__label"><input type="radio" name="theme" value="Ancient" id="theme-ancient"> Ancient</label></li>
+                <li class="m-menubar__item"><label for="theme-ancient-grayscale" class="m-menubar__label"><input type="radio" name="theme" value="Ancient-Grayscale" id="theme-ancient-grayscale"> Ancient Grayscale</label></li>
+                <li class="m-menubar__item"><label for="theme-ancient-print-friendly" class="m-menubar__label"><input type="radio" name="theme" value="Ancient-Print-Friendly" id="theme-ancient-print-friendly"> Ancient Print Friendly</label></li>
+            </ul>
+        </li>
+    </ul>
+    <div class="l-page">
+        <div class="grid">
+            <div class="row">
+                <div class="col-1/1">
+                    <h1>Charakterbogen</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5/12">
+                    <div class="row">
+                        <label for="name" class="col-2/12"><strong>Name:</strong></label>
+                        <div class="col-10/12">
+                            <input type="text" name="name" id="name" class="col m-input m-input--text">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="race" class="col-2/12"><strong>Rasse:</strong></label>
+                        <div class="col-10/12">
+                            <input type="text" name="race" id="race" class="col m-input m-input--text">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="culture" class="col-2/12"><strong>Kultur:</strong></label>
+                        <div class="col-10/12">
+                            <input type="text" name="culture" id="culture" class="col m-input m-input--text">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="class" class="col-2/12"><strong>Klasse:</strong></label>
+                        <div class="col-10/12">
+                            <input type="text" name="class" id="class" class="col m-input m-input--text">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-7/12">
+                    <div class="row">
+                        <label for="description" class="col-3/12"><strong>Beschreibung</strong></label>
+                        <div class="col-9/12">
+                            <textarea id="description" name="description" class="m-input m-input--textarea m-input--textarea--7"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1/1">
+                    <h2>Eigenschaften</h2>
+                </div>
+            </div>
+            <div class="row h-center">
+                <div class="col-1/4">
+                    <h3>Stärke</h3>
+                    <input type="checkbox" name="str-1" class="m-circle">
+                    <input type="checkbox" name="str-2" class="m-circle">
+                    <input type="checkbox" name="str-3" class="m-circle">
+                    <input type="checkbox" name="str-4" class="m-circle">
+                    <input type="checkbox" name="str-5" class="m-circle">
+                </div>
+                <div class="col-1/4">
+                    <h3>Agilität</h3>
+                    <input type="checkbox" name="agi-1" class="m-circle">
+                    <input type="checkbox" name="agi-2" class="m-circle">
+                    <input type="checkbox" name="agi-3" class="m-circle">
+                    <input type="checkbox" name="agi-4" class="m-circle">
+                    <input type="checkbox" name="agi-5" class="m-circle">
+                </div>
+                <div class="col-1/4">
+                    <h3>Fingerfertigkeit</h3>
+                    <input type="checkbox" name="ff-1" class="m-circle">
+                    <input type="checkbox" name="ff-2" class="m-circle">
+                    <input type="checkbox" name="ff-3" class="m-circle">
+                    <input type="checkbox" name="ff-4" class="m-circle">
+                    <input type="checkbox" name="ff-5" class="m-circle">
+                </div>
+                <div class="col-1/4">
+                    <h3>Konstitution</h3>
+                    <input type="checkbox" name="ko-1" class="m-circle">
+                    <input type="checkbox" name="ko-2" class="m-circle">
+                    <input type="checkbox" name="ko-3" class="m-circle">
+                    <input type="checkbox" name="ko-4" class="m-circle">
+                    <input type="checkbox" name="ko-5" class="m-circle">
+                </div>
+            </div>
+            <div class="row h-center h-margin--top">
+                <div class="col-1/4">
+                    <h3>Mut</h3>
+                    <input type="checkbox" name="mu-1" class="m-circle">
+                    <input type="checkbox" name="mu-2" class="m-circle">
+                    <input type="checkbox" name="mu-3" class="m-circle">
+                    <input type="checkbox" name="mu-4" class="m-circle">
+                    <input type="checkbox" name="mu-5" class="m-circle">
+                </div>
+                <div class="col-1/4">
+                    <h3>Klugkeit</h3>
+                    <input type="checkbox" name="kl-1" class="m-circle">
+                    <input type="checkbox" name="kl-2" class="m-circle">
+                    <input type="checkbox" name="kl-3" class="m-circle">
+                    <input type="checkbox" name="kl-4" class="m-circle">
+                    <input type="checkbox" name="kl-5" class="m-circle">
+                </div>
+                <div class="col-1/4">
+                    <h3>Intuition</h3>
+                    <input type="checkbox" name="in-1" class="m-circle">
+                    <input type="checkbox" name="in-2" class="m-circle">
+                    <input type="checkbox" name="in-3" class="m-circle">
+                    <input type="checkbox" name="in-4" class="m-circle">
+                    <input type="checkbox" name="in-5" class="m-circle">
+                </div>
+                <div class="col-1/4">
+                    <h3>Charisma</h3>
+                    <input type="checkbox" name="ch-1" class="m-circle">
+                    <input type="checkbox" name="ch-2" class="m-circle">
+                    <input type="checkbox" name="ch-3" class="m-circle">
+                    <input type="checkbox" name="ch-4" class="m-circle">
+                    <input type="checkbox" name="ch-5" class="m-circle">
+                </div>
+            </div>
+            <div class="row h-margin--top">
+                <div class="col-1/1">
+                    <h2>Fertigkeiten</h2>
+                </div>
+            </div>
+            <div class="row h-center">
+                <div class="col-1/12">&nbsp;</div>
+                <div class="col-1/6">
+                    <h3>Nahkampf</h3>
+                    <input type="checkbox" name="n-1" class="m-circle">
+                    <input type="checkbox" name="n-2" class="m-circle">
+                    <input type="checkbox" name="n-3" class="m-circle">
+                    <input type="checkbox" name="n-4" class="m-circle">
+                    <input type="checkbox" name="n-5" class="m-circle">
+                </div>
+                <div class="col-1/6">
+                    <h3>Fernkampf</h3>
+                    <input type="checkbox" name="f-1" class="m-circle">
+                    <input type="checkbox" name="f-2" class="m-circle">
+                    <input type="checkbox" name="f-3" class="m-circle">
+                    <input type="checkbox" name="f-4" class="m-circle">
+                    <input type="checkbox" name="f-5" class="m-circle">
+                </div>
+                <div class="col-1/6">
+                    <h3>Körperlich</h3>
+                    <input type="checkbox" name="k-1" class="m-circle">
+                    <input type="checkbox" name="k-2" class="m-circle">
+                    <input type="checkbox" name="k-3" class="m-circle">
+                    <input type="checkbox" name="k-4" class="m-circle">
+                    <input type="checkbox" name="k-5" class="m-circle">
+                </div>
+                <div class="col-1/6">
+                    <h3>Geistig</h3>
+                    <input type="checkbox" name="g-1" class="m-circle">
+                    <input type="checkbox" name="g-2" class="m-circle">
+                    <input type="checkbox" name="g-3" class="m-circle">
+                    <input type="checkbox" name="g-4" class="m-circle">
+                    <input type="checkbox" name="g-5" class="m-circle">
+                </div>
+                <div class="col-1/6">
+                    <h3>Magie</h3>
+                    <input type="checkbox" name="m-1" class="m-circle">
+                    <input type="checkbox" name="m-2" class="m-circle">
+                    <input type="checkbox" name="m-3" class="m-circle">
+                    <input type="checkbox" name="m-4" class="m-circle">
+                    <input type="checkbox" name="m-5" class="m-circle">
+                </div>
+                <div class="col-1/12">&nbsp;</div>
+            </div>
+            <div class="row h-margin--top">
+                <div class="col-6/12">
+                    <h2>Vorteile</h2>
+                    <textarea class="m-input m-input--textarea m-input--textarea--7" name="advantages"></textarea>
+                    <h2>Nachteile</h2>
+                    <textarea class="m-input m-input--textarea m-input--textarea--7" name="disadvantages"></textarea>
+                </div>
+                <div class="col-6/12">
+                    <div class="row h-margin--top">
+                        <div class="col-7/12"><h3>Rüstung</h3></div>
+                        <div class="col-5/12 h-right">
+                            <input type="text" class="m-input m-input--text m-input--graybox h-center" name="armor">
+                        </div>
+                    </div>
+                    <div class="row h-margin--top">
+                        <div class="col-6/12">
+                            <h3>Mana</h3>
+                            <small class="h-small-block">(KL + IN + MU + G + M + M) * 5</small>
+                        </div>
+                        <div class="col-6/12 h-right">
+                            <input type="text" class="m-input m-input--text m-input--graybox h-center" name="mana-basis" readonly>
+                            <input type="text" class="m-input m-input--text m-input--graybox h-center" name="mana-bonus">
+                            <input type="text" class="m-input m-input--text m-input--graybox h-center" name="mana-buy">
+                            <input type="text" class="m-input m-input--text m-input--graybox h-center" name="mana-max" readonly>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="row h-margin--top">
+                            <div class="col-6/12">
+                                <h3>Initiative</h3>
+                                <small class="h-small-block">IN + K + G</small>
+                            </div>
+                            <div class="col-6/12 h-right">
+                                <input type="text" class="m-input m-input--text m-input--graybox h-center" name="initiative-basis" readonly>
+                                <input type="text" class="m-input m-input--text m-input--graybox h-center" name="initiative-bonus">
+                                <input type="text" class="m-input m-input--text m-input--graybox m-input--crossed" readonly>
+                                <input type="text" class="m-input m-input--text m-input--graybox h-center" name="initiative" readonly>
+                            </div>
+                        </div>
+                        <div class="row h-margin--top">
+                            <div class="col-6/12">
+                                <h3>Wundschwelle</h3>
+                                <small class="h-small-block">(STR + KO + KO + K) / 5</small>
+                            </div>
+                            <div class="col-6/12 h-right">
+                                <input type="text" class="m-input m-input--text m-input--graybox h-center" name="wound-threshold-basis" readonly>
+                                <input type="text" class="m-input m-input--text m-input--graybox h-center" name="wound-threshold-bonus">
+                                <input type="text" class="m-input m-input--text m-input--graybox m-input--crossed" readonly>
+                                <input type="text" class="m-input m-input--text m-input--graybox h-center" name="wound-threshold">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row h-margin--top">
+                <div class="col-1/3">
+                    <h2>Wunden</h2>
+                </div>
+                <div class="col-1/3">
+                    <h2>Mana</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1/3">
+                    <div class="l-flex l-flex--spaced">
+                        <div>
+                            <div class="m-circle"></div><br />
+                            <strong>-1</strong>
+                        </div>
+                        <div>
+                            <div class="m-circle"></div><br />
+                            <strong>-3</strong>
+                        </div>
+                        <div>
+                            <div class="m-circle"></div><br />
+                            <strong>-5</strong>
+                        </div>
+                        <div>
+                            <div class="m-circle"></div><br />
+                            <strong>-7</strong>
+                        </div>
+                        <div>
+                            <div class="m-circle"></div><br />
+                            <strong>---</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1/3">
+                    <input type="text" class="m-input m-input--text" name="mana">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="l-page">
+        <div class="grid">
+            <div class="row">
+                <div class="col-1/1">
+                    <h1>Talentbogen</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1/2"><h2>Nahkampf</h2></div>
+                <div class="col-1/2"><h2>Fernkampf</h2></div>
+            </div>
+            <div class="row">
+                <div class="col-1/2">
+                    <template data-prefix="melee" use="#talent-row" repeat="7"></template>
+                </div>
+                <div class="col-1/2">
+                    <template data-prefix="range" use="#talent-row" repeat="7"></template>
+                </div>
+            </div>
+            <div class="row h-margin--top">
+                <div class="col-1/2"><h2>Körperlich</h2></div>
+                <div class="col-1/2"><h2>Geistig</h2></div>
+            </div>
+            <div class="row">
+                <div class="col-1/2">
+                    <template data-prefix="physique" use="#talent-row" repeat="15"></template>
+                </div>
+                <div class="col-1/2">
+                    <template data-prefix="mental" use="#talent-row" repeat="15"></template>
+                </div>
+            </div>
+            <div class="row h-margin--top">
+                <div class="col-1/1"><h2>Magie</h2></div>
+            </div>
+            <div class="row">
+                <div class="col-1/2">
+                    <template data-prefix="magic1" use="#talent-row" repeat="6"></template>
+                </div>
+                <div class="col-1/2">
+                    <template data-prefix="magic2" use="#talent-row" repeat="6"></template>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="l-page">
+        <div class="grid">
+            <div class="row">
+                <div class="col-1/1">
+                    <h1>Ausrüstungsbogen</h1>
+                </div>
+            </div>
+            <div class="row">
+                <label for="clothes" class="col-1/2"><h2>Inventar</h2></label>
+                <label for="money" class="col-1/2"><h2>Vermögen</h2></label>
+            </div>
+            <div class="row">
+                <div class="col-1/2">
+                    <textarea id="clothes" name="clothes" class="m-input m-input--textarea m-input--textarea--7"></textarea>
+                </div>
+                <div class="col-1/2">
+                    <textarea id="money" name="money" class="m-input m-input--textarea m-input--textarea--7"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <label for="equipment" class="col-1/1"><h2>Ausrüstung</h2></label>
+            </div>
+            <div class="row">
+                <div class="col-1/2">
+                    <textarea id="equipment" name="equipement1" class="m-input m-input--textarea m-input--textarea--7"></textarea>
+                </div>
+                <div class="col-1/2">
+                    <textarea name="equipement2" class="m-input m-input--textarea m-input--textarea--7"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <h2>Nahkampfwaffen</h2>
+            </div>
+            <div class="row">
+                <div class="grid">
+                    <div class="row">
+                        <div class="col-6/12"><h3>Name</h3></div>
+                        <div class="col-2/12 h-center"><h3>Typ</h3></div>
+                        <div class="col-1/12 h-center"><h3>Eig.</h3></div>
+                        <div class="col-1/12 h-center"><h3>AT</h3></div>
+                        <div class="col-1/12 h-center"><h3>PA</h3></div>
+                        <div class="col-1/12 h-center"><h3>Schaden</h3></div>
+                    </div>
+                    <template use="#melee-weapon-row" data-prefix="melee-weapon" repeat="6"></template>
+                </div>
+            </div>
+            <div class="row h-margin--top">
+                <h2>Fernkampfwaffen</h2>
+            </div>
+            <div class="row">
+                <div class="grid">
+                    <div class="row">
+                        <div class="col-4/12"><h3>Name</h3></div>
+                        <div class="col-2/12 h-center"><h3>Typ</h3></div>
+                        <div class="col-1/12 h-center"><h3>Eig.</h3></div>
+                        <div class="col-2/12"><h3>Reichweite</h3></div>
+                        <div class="col-1/12 h-center"><h3>PA</h3></div>
+                        <div class="col-2/12"><h3>Schaden</h3></div>
+                    </div>
+                    <template use="#range-weapon-row" data-prefix="range-weapon" repeat="6"></template>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <template id="talent-row">
+        <div class="m-talent l-flex">
+            <div class="l-flex__shrink">
+                <input name="{{prefix}}-{{index}}-ability" type="text" class="m-input m-talent__ability">
+            </div>
+            <div class="l-flex__grow">
+                <input name="{{prefix}}-{{index}}-name" type="text" class="m-input m-talent__name">
+            </div>
+
+            <div class="l-flex__shrink">
+                <input name="{{prefix}}-{{index}}-attribute" type="text" class="m-input m-talent__attribute">
+            </div>
+
+            <div class="l-flex__shrink">
+                <input type="checkbox" name="{{prefix}}-{{index}}-pnt1" class="m-circle m-circle--small">
+                <input type="checkbox" name="{{prefix}}-{{index}}-pnt2" class="m-circle m-circle--small">
+                <input type="checkbox" name="{{prefix}}-{{index}}-pnt3" class="m-circle m-circle--small">
+                <input type="checkbox" name="{{prefix}}-{{index}}-pnt4" class="m-circle m-circle--small">
+                <input type="checkbox" name="{{prefix}}-{{index}}-pnt5" class="m-circle m-circle--small">
+            </div>
+        </div>
+    </template>
+
+    <template id="melee-weapon-row">
+        <div class="row">
+            <div class="col-6/12">
+                <input type="text" name="{{prefix}}-{{index}}-name" class="m-input m-input--text">
+            </div>
+            <div class="col-2/12">
+                <input type="text" name="{{prefix}}-{{index}}-type" class="m-input m-input--text">
+            </div>
+            <div class="col-1/12">
+                <select name="{{prefix}}-{{index}}-attribute" class="m-input m-input--dropdown">
+                    <option value=""></option>
+                    <option value="STR">STR</option>
+                    <option value="AGI">AGI</option>
+                    <option value="FF">FF</option>
+                    <option value="KO">KO</option>
+                    <option value="MU">MU</option>
+                    <option value="KL">KL</option>
+                    <option value="IN">IN</option>
+                    <option value="CH">CH</option>
+                </select>
+            </div>
+            <div class="col-1/12">
+                <input type="text" name="{{prefix}}-{{index}}-at" class="m-input m-input--text h-center">
+            </div>
+            <div class="col-1/12">
+                <input type="text" name="{{prefix}}-{{index}}-pa" class="m-input m-input--text h-center">
+            </div>
+            <div class="col-1/12">
+                <input type="text" name="{{prefix}}-{{index}}-damage" class="m-input m-input--text h-center">
+            </div>
+        </div>
+    </template>
+
+    <template id="range-weapon-row">
+        <div class="row">
+            <div class="col-4/12">
+                <input type="text" name="{{prefix}}-{{index}}-name" class="m-input m-input--text">
+            </div>
+            <div class="col-2/12">
+                <input type="text" name="{{prefix}}-{{index}}-type" class="m-input m-input--text">
+            </div>
+            <div class="col-1/12">
+                <select name="{{prefix}}-{{index}}-attribute" class="m-input m-input--dropdown">
+                    <option value=""></option>
+                    <option value="STR">STR</option>
+                    <option value="AGI">AGI</option>
+                    <option value="FF">FF</option>
+                    <option value="KO">KO</option>
+                    <option value="MU">MU</option>
+                    <option value="KL">KL</option>
+                    <option value="IN">IN</option>
+                    <option value="CH">CH</option>
+                </select>
+            </div>
+            <div class="col-2/12">
+                <input type="text" name="{{prefix}}-{{index}}-range" class="m-input m-input--text h-center">
+            </div>
+            <div class="col-1/12">
+                <input type="text" name="{{prefix}}-{{index}}-pa" class="m-input m-input--text h-center">
+            </div>
+            <div class="col-2/12">
+                <input type="text" name="{{prefix}}-{{index}}-damage" class="m-input m-input--text h-center">
+            </div>
+        </div>
+    </template>
+
+    <script>
+        System.config({
+            baseURL: './',
+            transpiler: 'plugin-babel',
+            map: {
+                'plugin-babel': 'https://unpkg.com/systemjs-plugin-babel@0.0.21/plugin-babel.js',
+                'systemjs-babel-build': 'https://unpkg.com/systemjs-plugin-babel@0.0.21/systemjs-babel-browser.js',
+            }
+        });
+
+        System.import('scripts/init.js');
+    </script>
+</body>
+</html>

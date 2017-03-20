@@ -1,0 +1,68 @@
+@import "https://unpkg.com/normalize.css@5.0.0/normalize.css";
+@import url('https://fonts.googleapis.com/css?family=Jim+Nightshade');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+@import 'base.css';
+
+@import 'layout/base.css';
+
+@import "layout/grid.css";
+@import "layout/flex.css";
+@import "layout/page.css";
+
+@import "modules/table.css";
+@import "modules/input.css";
+@import "modules/circle.css";
+@import "modules/menubar.css";
+
+
+@import 'helper.css';
+
+
+
+.m-talent {
+    font-size: 0;
+}
+.m-talent > * * {
+    font-size: var(--font-size);
+}
+
+.m-talent > *:first-child input {
+    width: .75cm;
+    margin-right: var(--grid-spacing);
+    text-align: center;
+}
+.m-talent > *:last-child {
+    white-space: nowrap;
+    padding-left: var(--grid-spacing);
+}
+
+.m-talent > *:nth-child(3) .m-talent__attribute {
+    margin-left: var(--grid-spacing);
+    width: 1.5cm;
+    text-align: center;
+}
+
+.m-talent > *:nth-child(3) {
+    padding-right: var(--grid-spacing);
+}
+
+.m-talent input {
+
+}
+
+@page {
+    size: A4;
+    margin: 0;
+}
+
+@media print {
+    html, body {
+        width: 21cm;
+        height: 29.7cm;
+    }
+
+    .l-page {
+        margin: 0;
+    }
+}

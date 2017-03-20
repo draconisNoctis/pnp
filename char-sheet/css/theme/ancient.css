@@ -1,0 +1,40 @@
+
+[theme*="Ancient"] {
+    --font-family: 'Jim Nightshade';
+    --line-width: 2px;
+    --font-size: 16px;
+    --line-height:24px;
+    --letter-spacing: 0;
+}
+
+[theme*="Ancient"] .l-page {
+    position: relative;
+}
+
+[theme*="Ancient"] .l-page > * {
+    position: relative;
+    z-index: 1;
+}
+
+[theme*="Ancient"] .l-page::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    background: url('../../img/background.jpg') no-repeat center/100%;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: .5;
+    filter: saturate(70%);
+}
+
+
+[theme*="Ancient-Grayscale"] .l-page::before {
+    opacity: .3;
+    filter: grayscale(100%);
+}
+
+[theme*="Ancient-Print-Friendly"] .l-page::before {
+    background: #fff;
+}

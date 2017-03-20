@@ -1,0 +1,13 @@
+:root {
+    --font-color: #333;
+    --font-size: 14px;
+    --line-height:23px;
+    --font-family: Roboto, Helvetica, sans-serif;
+
+    --font: var(--font-size)/var(--line-height) var(--font-family);
+
+    --line-width: 1px;
+    --letter-spacing: -0.5px;
+
+    --grid-spacing: 8px;
+}
